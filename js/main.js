@@ -26,13 +26,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize the game
   function initGame() {
-    currentInterval = 1000;
-    minInterval = 100;
+    currentInterval = 500;
+    minInterval = 150;
 
     initPlayer();
     initAsteroids();
     asteroidCreationIntervalId = setInterval(initAsteroids, currentInterval);
-    asteroidSpeedUpIntervalId = setInterval(setupAsteroidIntervalDecrease, 10000);
+    asteroidSpeedUpIntervalId = setInterval(setupAsteroidIntervalDecrease, 5000);
 
     startTime = Date.now();
     elapsedTime = 0;
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Decrease the interval by 100 every 10 seconds until it reaches the minimum
   function setupAsteroidIntervalDecrease() {
       if (currentInterval > minInterval) {
-        currentInterval -= 100;
+        currentInterval -= 25;
         clearInterval(asteroidCreationIntervalId);
         asteroidCreationIntervalId = setInterval(initAsteroids, currentInterval);
       }

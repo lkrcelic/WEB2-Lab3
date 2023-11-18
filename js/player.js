@@ -6,8 +6,8 @@ export function initPlayer() {
     player = {
     x: canvas.width / 2,
     y: canvas.height / 2,
-    width: 50,   // Adjust based on your image size
-    height: 65,  // Adjust based on your image size
+    width: 55,   // Adjust based on your image size
+    height: 70,  // Adjust based on your image size
     speed: 6,
     image: new Image()
   };
