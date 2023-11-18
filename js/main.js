@@ -18,6 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentInterval;
   let minInterval;
 
+  // For background
+  let y = 0;
+  let scrollSpeed = 2; // Adjust the speed of the scrolling
+  let backgroundImage = new Image();
+  backgroundImage.src = './../img/space-background.png'; // Set this to your background image path
+
   // Initialize the game
   function initGame() {
     currentInterval = 1000;
@@ -43,6 +49,19 @@ document.addEventListener("DOMContentLoaded", function () {
     // Start game loop
     play = true;
     requestAnimationFrame(gameLoop);
+  }
+
+
+
+// Function to draw the background
+  function drawBackground() {
+    // Draw the image twice (once at y and once directly above)
+    ctx.drawImage(backgroundImage, 0, y, canvas.width, canvas.height);
+    ctx.drawImage(backgroundImage, 0, y - canvas.height, canvas.width, canvas.height);
+
+    // Update y position
+    y += scrollSpeed;
+    if (y >= canvas.height) y = 0; // Reset y to 0 when it goes off screen
   }
 
   function updateTimer() {
@@ -161,6 +180,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Game loop
   async function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawBackground();
 
     // Update and display time
     updateTimer();
